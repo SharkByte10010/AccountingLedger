@@ -1,28 +1,25 @@
 package com.example;
-
 import java.io.FileWriter;
 import java.io.IOException;
-import java.lang.invoke.LambdaMetafactory;
+import java.time.LocalDate;
 import java.util.Scanner;
 
 public class Main {
-    static Scanner consoleInput = new Scanner(System.in);
-
     public static void main(String[] args) {
         homescreen();
     }
 
     public static void homescreen() {
-        System.out.println("Welcome to the Accounting Ledger ");
+        Scanner scanner = new Scanner(System.in);
         System.out.println("""
-                Choose an option from the main menu:\s
+                Welcome to your Finance Account!
+                Main Menu:
                 [D] - Add Deposit
-                [P] - Make Payment(Debit)
+                [P] - Make Payment
                 [L] - Ledger
-                [X] - Exit Application
-                                   """);
-        String input = consoleInput.nextLine();
-        switch (input.toUpperCase()) {
+                [X] - Exit""");
+        String input = scanner.nextLine();
+        switch(input.toUpperCase()){
             case "D":
                 addDeposit();
                 break;
@@ -34,63 +31,69 @@ public class Main {
                 break;
             case "X":
                 System.exit(0);
-                break;
             default:
-                System.out.println("Invalid entry... Try again ");
+                System.out.println("Please enter a valid option");
                 break;
         }
     }
 
     public static void addDeposit() {
+        Scanner scanner = new Scanner(System.in);
         System.out.println("Enter Date: YYYY-MM-DD");
-        String date = consoleInput.nextLine();
-        System.out.println("Enter Time: HH-MM-ss ");
-        String time = consoleInput.nextLine();
-        System.out.println("Enter vendor: ");
-        String vendor = consoleInput.nextLine();
-        System.out.println("Enter brief description: ");
-        String description = consoleInput.nextLine();
-        System.out.println("Enter transaction amount: ");
-        double amount = consoleInput.nextDouble();
+        String date = scanner.nextLine();
+        System.out.println("Enter Time: HH:MM:SS");
+        String time = scanner.nextLine();
+        System.out.println("Enter Description:");
+        String description = scanner.nextLine();
+        System.out.println("Enter Vendor:");
+        String vendor = scanner.nextLine();
+        System.out.println("Enter Deposit Amount:");
+        double amount = scanner.nextDouble();
 
-        try (FileWriter fileWriter = new FileWriter("transactions.csv", true)) {
-            fileWriter.write("\n" + date + "|" +
+        try (FileWriter fileWriter = new FileWriter("transactions.csv", true)){
+            fileWriter.write("\n" +
+                    date + "|" +
                     time + "|" +
                     description + "|" +
                     vendor + "|" +
-                    amount);
+                    amount
+            );
             fileWriter.close();
-            System.out.println("Deposit added ");
-        } catch (IOException e) {
-            System.out.println("Input not processed... Try again ");
+            System.out.println("Deposit added successfully!");
+        }
+        catch(IOException e){
+            System.out.println("Error inputting data!");
         }
         homescreen();
-
-
     }
 
-    public static void makePayment() {
-        System.out.println("Enter Date: YYYY-MM-DD");
-        String date = consoleInput.nextLine();
-        System.out.println("Enter Time: HH-MM-ss ");
-        String time = consoleInput.nextLine();
-        System.out.println("Enter vendor: ");
-        String vendor = consoleInput.nextLine();
-        System.out.println("Enter brief description: ");
-        String description = consoleInput.nextLine();
-        System.out.println("Enter transaction amount: ");
-        double amount = consoleInput.nextDouble();
 
-        try (FileWriter fileWriter = new FileWriter("transactions.csv", true)) {
-            fileWriter.write("\n" + date + "|" +
+    public static void makePayment() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter Date: YYYY-MM-DD");
+        String date = scanner.nextLine();
+        System.out.println("Enter Time: HH:MM:SS");
+        String time = scanner.nextLine();
+        System.out.println("Enter Description:");
+        String description = scanner.nextLine();
+        System.out.println("Enter Vendor:");
+        String vendor = scanner.nextLine();
+        System.out.println("Enter Transaction Amount:");
+        double amount = scanner.nextDouble();
+
+        try (FileWriter fileWriter = new FileWriter("transactions.csv", true)){
+            fileWriter.write("\n" +
+                    date + "|" +
                     time + "|" +
                     description + "|" +
                     vendor + "|" + "-" +
-                    amount);
+                    amount
+            );
             fileWriter.close();
-            System.out.println("Payment added ");
-        } catch (IOException e) {
-            System.out.println("Input not processed... Try again ");
+            System.out.println("Payment made successfully!");
+        }
+        catch(IOException e){
+            System.out.println("Error inputting data!");
         }
         homescreen();
     }
