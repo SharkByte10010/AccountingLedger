@@ -10,6 +10,7 @@ public class Main {
 
     public static void homescreen() {
         Scanner scanner = new Scanner(System.in);
+        String input = null;
         System.out.println("===== Hello! Welcome To Your Accounting Ledger: ======\n");
         System.out.println(("Main Menu"));
         System.out.println("[D] - Add a Deposit");
@@ -17,7 +18,7 @@ public class Main {
         System.out.println("[L] - View Ledger");
         System.out.println("[X] - Exit Application");
 // use switch statement
-        String input = scanner.nextLine();
+        input = scanner.nextLine();
         switch (input.toUpperCase()) {
             case "D":
                 addDeposit();
@@ -62,7 +63,7 @@ public class Main {
             FileWriter fileWriter = new FileWriter("transactions.csv", true);
             // Store all information with a -ve sign before the amount variable
             fileWriter.write("\n" + date + "|" + time + "|" + description + "|" + vendor + "|" + amount + "|");
-            System.out.println("WooHoo! Your payment was made successfully");
+            System.out.println("Your payment was made successfully");
             fileWriter.close();
         } catch (IOException e) { //prints out error message when input is wrong
             System.out.println("Oh no! There was an error inputting data!");
