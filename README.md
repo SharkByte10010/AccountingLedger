@@ -1,6 +1,6 @@
 # Accounting Ledger
 ## Description
-This is a Java application that allows the user to make deposits, payments, as well view the accounting transactions. These transactions will be stored in a file names transactions.csv.
+This is a Java application that allows the user to make deposits, payments, as well view the accounting transactions. These transactions will be stored in a file named transactions.csv.
 # Abilities
 - Make Deposits
 - Make Payments

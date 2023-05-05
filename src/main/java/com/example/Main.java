@@ -48,7 +48,7 @@ public class Main {
         System.out.println("=================PAYMENT=================\n");
         System.out.println("Okay!....Lets make a payment.");
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Please enter Date:(yyyy-MM-dd)");
+        System.out.println("Please enter Date:(YYYY-MM-dd)");
         String date = scanner.nextLine();
         System.out.println("Please enter Time: (HH:mm:SS)");
         String time = scanner.nextLine();
@@ -90,7 +90,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         System.out.println("=================DEPOSIT=================\n");
         System.out.println("Okay!....Lets add a deposit.");
-        System.out.println("Please enter Date:(yyyy-MM-dd)");
+        System.out.println("Please enter Date:(YYYY-MM-DD)");
         String date = scanner.nextLine();
         System.out.println("Please enter Time: (HH:mm:SS)");
         String time = scanner.nextLine();
