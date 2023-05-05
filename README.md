@@ -1,6 +1,6 @@
 # Accounting Ledger
 ## Description
-This is an application that allows the user to make deposits, payments, as well view the accounting transactions.
+This is a Java application that allows the user to make deposits, payments, as well view the accounting transactions.
 # Abilities
 - Make Deposits
 - Make Payments
@@ -8,7 +8,7 @@ This is an application that allows the user to make deposits, payments, as well 
 - Make Reports
 
 ## Intersesting Piece Of Code
-> while (true) { // using else/if statement to correspond based on users input
+> while (true) { 
 if (choice.equalsIgnoreCase("H")) {
 Main.homescreen();
 break;
@@ -19,4 +19,13 @@ break;
 System.out.println("Please enter a valid option ('H' or 'P'):");
 choice = scanner.next();
 }
-}
+
+## Pictures
+## Main Menu
+![Capstone Project1.png](src%2Fmain%2Fresources%2FCapstone%20Project1.png)
+## Ledger Menu
+![Capstone Project2.png](src%2Fmain%2Fresources%2FCapstone%20Project2.png)
+## Report Menu
+![Capstone Project3.png](src%2Fmain%2Fresources%2FCapstone%20Project3.png)
+## Example Of "MonthToDate" Report
+![CapstoneProject4.png](src%2Fmain%2Fresources%2FCapstoneProject4.png)

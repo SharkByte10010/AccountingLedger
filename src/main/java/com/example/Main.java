@@ -29,6 +29,7 @@ public class Main {
                 Ledger.showLedger();
                 break;
             case "X":
+                System.out.println("Goodbye For Now ;) ");
                 System.exit(0);
                 break;
             default:
@@ -111,7 +112,7 @@ public class Main {
         System.out.println("Return To Homescreen(H)?...Or add another deposit(D)?  ");
         String choice = scanner.next();
 
-        while (true) { // using else/if statement based on users input to return to homescreen or add another deposit.
+        while (true) { // using if/else statement based on users input to return to homescreen or add another deposit.
             if (choice.equalsIgnoreCase("H")) {
                 Main.homescreen();
                 break;
