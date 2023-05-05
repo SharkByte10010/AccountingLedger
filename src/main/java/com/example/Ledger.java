@@ -57,12 +57,13 @@ public class Ledger {
 
     public static void showLedger() { // creating method called showLedger() to display ledger screen
         Scanner scanner = new Scanner(System.in);
+        System.out.println("================LEDGER================\n");
         System.out.println("Welcome to your ledger ");
         System.out.println(("Main Menu: "));
-        System.out.println("[A] - Display all entries");
-        System.out.println("[D] - Display only the entries that are deposited into the account");
-        System.out.println("[P] - Display only the negative entries(payments)");
-        System.out.println("[R] - Reports");
+        System.out.println("[A] - View All Entries");
+        System.out.println("[D] - View Deposits");
+        System.out.println("[P] - View Payments");
+        System.out.println("[R] - View Reports");
         System.out.println("[X] - Go back to Home page");
         //using switch method instead of if-else statement to run the corresponding method based on users input
 
@@ -92,14 +93,15 @@ public class Ledger {
     //show reports
     public static void showReports() { // creating a method called showReports() to display the reprots menu
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Welcome to your Reports ledger ");
+        System.out.println("================REPORTS================\n");
+        System.out.println("Welcome to Reports\n");
         System.out.println(("Reports Menu: "));
         System.out.println("[1] - Month to Date");
         System.out.println("[2] - Previous months");
         System.out.println("[3] - Year to Date");
         System.out.println("[4] - Previous Year");
         System.out.println("[5] - Search by Vendor");
-        System.out.println("[6] - Return to Homescreen");
+        System.out.println("[6] - Return to previous screen");
         //using switch method instead of if/else statement to run the corresponding method based on user's input
         String input = scanner.nextLine();
         switch (input.toUpperCase()) {
@@ -124,7 +126,7 @@ public class Ledger {
              break;
 
             case "6":
-             Main.homescreen();
+             showLedger();
              break;
 
         }
@@ -146,10 +148,20 @@ public class Ledger {
                         item.getVendor() + " | " + item.getAmount());
             }
         }
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Run again?(R).....Or return to Reports screen?(L)");
+        String choice = scanner.nextLine();
+        if (choice.equalsIgnoreCase("R")){
+            monthtoDate();
+        }else {
+            showReports();
+        }
+
     }
     private static void previousMonths() {
-        LocalDate today = LocalDate.now();
-        int previousMonthsValue = today.minusMonths(1).getMonthValue();
+        LocalDate today = LocalDate.now(); // this method gets the current date
+        int previousMonthsValue = today.minusMonths(1).getMonthValue(); // this method gets the previous month
         System.out.println("Previous months");
         for (Transactions transaction : transactionsList) {
             LocalDate transactionDate = transaction.getDate();
@@ -158,6 +170,14 @@ public class Ledger {
                         transaction.getAmount() + "|" + transaction.getDate());
 
             }
+        }
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Run again?(R).....Or return to Reports screen?(L)");
+        String choice = scanner.nextLine();
+        if (choice.equalsIgnoreCase("R")){
+            previousMonths();
+        }else {
+            showReports();
         }
     }
 
@@ -177,9 +197,17 @@ public class Ledger {
                         transaction.getVendor() + " | " + transaction.getAmount());
             }
         }
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Run again?(R).....Or return to Ledger screen?(L)");
+        String choice = scanner.nextLine();
+        if (choice.equalsIgnoreCase("R")){
+            yeartoDate();
+        }else {
+            showReports();
+        }
     }
 
-    private static void previousYears() {
+    private static void previousYears() { // prints prev
         LocalDate today = LocalDate.now();
         int previousYearValue = today.minusYears(1).getYear(); // changed to get previous year
         System.out.println("Previous Year");
@@ -190,6 +218,14 @@ public class Ledger {
                 System.out.println(item.getDate() + " | " + item.getTime() + " | " + item.getDescription() + " | " +
                         item.getVendor() + " | " + item.getAmount());
             }
+        }
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Run again?(R).....Or return to Reports screen?(L)");
+        String choice = scanner.nextLine();
+        if (choice.equalsIgnoreCase("R")){
+            previousYears();
+        }else {
+            showReports();
         }
     }
     private static void searchbyVendor() {
@@ -203,6 +239,14 @@ public class Ledger {
                         item.getVendor() + " | " + item.getAmount());
             }
         }
+        Scanner choice2 = new Scanner(System.in);
+        System.out.println("Search again?(R).....Or return to Reports screen?(L)");
+        String choice = scanner.nextLine();
+        if (choice.equalsIgnoreCase("R")){
+            searchbyVendor();
+        }else {
+            showReports();
+        }
     }
 
 
@@ -215,7 +259,14 @@ public class Ledger {
             System.out.println(item.getDate() + " " + item.getTime() + " " + item.getDescription() + " " +
                     item.getVendor() + " " +  item.getAmount());
             }
-
+        }
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Run again?(R).....Or return to previous screen?(L)");
+        String choice = scanner.nextLine();
+        if (choice.equalsIgnoreCase("R")){
+            showPaymentEntries();
+        }else {
+            showLedger();
         }
     }
 
@@ -229,7 +280,14 @@ public class Ledger {
                     item.getVendor() + " " +  item.getAmount());
             }
         }
-
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Run again?(R).....Or return to previous screen?(L)");
+        String choice = scanner.nextLine();
+        if (choice.equalsIgnoreCase("R")){
+            showDepositedEntries();
+        }else {
+            showLedger();
+        }
     }
 
     private static void allEntries() { // we're declaring the method called allEntries
@@ -239,5 +297,14 @@ public class Ledger {
             System.out.println(item.getDate() + " " + item.getTime() + " " + item.getDescription() + " " +
                     item.getVendor() + " " +  item.getAmount());
         }
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Run again?(R).....Or return to Previous screen?(L)");
+        String choice = scanner.nextLine();
+        if (choice.equalsIgnoreCase("R")){
+            allEntries();
+        }else {
+            showLedger();
+        }
     }
+
 }
