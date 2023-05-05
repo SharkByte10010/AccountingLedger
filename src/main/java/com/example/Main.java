@@ -111,7 +111,7 @@ public class Main {
         System.out.println("Return To Homescreen(H)?...Or add another deposit(D)?  ");
         String choice = scanner.next();
 
-        while (true) { // using else/if statement based on users input
+        while (true) { // using else/if statement based on users input to return to homescreen or add another deposit.
             if (choice.equalsIgnoreCase("H")) {
                 Main.homescreen();
                 break;
